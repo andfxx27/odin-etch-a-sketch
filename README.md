@@ -6,4 +6,4 @@ To try out the app, access [here](https://andfxx27.github.io/odin-etch-a-sketch)
 
 ## TODO
 
-[ ] - Change to random RGB value, and each mouse hover event will add 10% blackness to it
+- [ ] Change to random RGB value, and each mouse hover event will add 10% blackness to it
