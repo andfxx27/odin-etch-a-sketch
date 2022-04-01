@@ -6,13 +6,39 @@ const gridSizeRangeInput = document.querySelector("#grid-size");
 function clearDrawingGrid() {
   const columnGrid = drawingContainer.getElementsByClassName("column-grid");
   for (let i = 0; i < columnGrid.length; i++) {
-    columnGrid[i].classList.remove("column-grid-dark-bg");
+    columnGrid[i].classList.remove("colored");
+    columnGrid[i].style.backgroundColor = "";
   }
+}
+
+// Generate random color hex code
+function createRandomColor() {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
 
 // Create color trail
 function generateColorTrail(e) {
-  e.target.classList.add("column-grid-dark-bg");
+  // Check if "colored" class is already added to the grid
+  let colored = false;
+  const classList = e.target.classList;
+  for (const key of Object.keys(classList)) {
+    if (classList[key] === "colored") {
+      colored = true;
+    }
+  }
+
+  if (colored) {
+    // TODO Add 10% black tint for every hover, until completely black
+  } else {
+    // Add new random color and flag grid for colored
+    e.target.style.backgroundColor = createRandomColor();
+    e.target.classList.add("colored");
+  }
 }
 
 // Draw size x size grid
